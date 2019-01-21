@@ -1,0 +1,94 @@
+
+var bb = [-0.15, 2.15, 2.15, -0.15];		
+var b = JXG.JSXGraph.initBoard('jxg-IO-v-time', {boundingbox:bb, axis:false, grid:false, zoom:{wheel:true, needshift:true}, pan:{enabled:true, needshift:true}, showNavigation:true,	showCopyright:false  });
+
+
+/**	
+have just 1 axis
+draw extra 0 and 1 ticks manually in screen coords.
+have 2 gliders in screen coords---may be over kill or may be best
+2 points for in and out before turtle get to end
+maybe 2 points at end of turtle bur prolly not...turtle in jsx is for animation or something
+*/ 
+
+
+
+/**
+ * make axes permanent
+ * credit for these axes to the author of http://jsfiddle.net/migerh/DWpAw/
+ */
+ 
+var tick00 = b.create('point', [function () {
+    	var coords = new JXG.Coords(JXG.COORDS_BY_SCREEN, [50, b.canvasHeight - 30], b);
+    	return coords.usrCoords;
+	}], {needsRegularUpdate: false, visible: false});
+var tick01 = b.create('point', [function () {
+    	var coords = new JXG.Coords(JXG.COORDS_BY_SCREEN, [30, b.canvasHeight - 30], b);
+    	return coords.usrCoords;
+	}], {needsRegularUpdate: false, visible: false});
+var tick0 = b.create('line', [tick00, tick01], {withLabel:true, name:'0', straightFirst:false, straightLast:false, Label:{color:'blue'}});
+
+
+var tick10 = b.create('point', [function () {
+    	var coords = new JXG.Coords(JXG.COORDS_BY_SCREEN, [50, 30], b);
+    	return coords.usrCoords;
+	}], {needsRegularUpdate: false, visible: false});
+var tick11 = b.create('point', [function () {
+    	var coords = new JXG.Coords(JXG.COORDS_BY_SCREEN, [30, 30], b);
+    	return coords.usrCoords;
+	}], {needsRegularUpdate: false, visible: false});
+var tick1 = b.create('line', [tick10, tick11], {withLabel:true, name:'1', straightFirst:false, straightLast:false, Label:{color:'blue'}});
+
+var x0 = b.create('point', [function () {
+    	var coords = new JXG.Coords(JXG.COORDS_BY_SCREEN, [0, b.canvasHeight - 50], b);
+    	return coords.usrCoords;
+	}], {needsRegularUpdate: false, visible: false});
+var x1 = b.create('point', [function () {
+	    var coords = new JXG.Coords(JXG.COORDS_BY_SCREEN, [b.canvasWidth, b.canvasHeight - 50], b);
+   	 return coords.usrCoords;
+	}], {needsRegularUpdate: false, visible: false});
+var oX = b.create('axis', [x0, x1], {needsRegularUpdate: false, strokeColor: 'black'});
+
+var y0 = b.create('point', [function () {
+    var coords = new JXG.Coords(JXG.COORDS_BY_SCREEN, [50, b.canvasHeight], b);
+    return coords.usrCoords;
+}], {needsRegularUpdate: false, visible: false});
+var y1 = b.create('point', [function () {
+    var coords = new JXG.Coords(JXG.COORDS_BY_SCREEN, [50, 0], b);
+    return coords.usrCoords;
+}], {needsRegularUpdate: false, visible: false});
+var oYI = b.create('axis', [y0, y1], {needsRegularUpdate: false, strokeColor: 'red', ticks:{label:{color:'red'}}});
+/*
+var y2 = b.create('point', 
+	[	function () {
+   		var coords = new JXG.Coords(JXG.COORDS_BY_SCREEN, [25, b.canvasHeight], b);
+    		return coords.usrCoords;
+	}],
+	{needsRegularUpdate: false, visible: false}
+);
+var y3 = b.create('point', [function () {
+    var coords = new JXG.Coords(JXG.COORDS_BY_SCREEN, [25, 0], b);
+    return coords.usrCoords;
+}], {needsRegularUpdate: false, visible: false});
+var oYO = b.create('axis', [y2, y3], {needsRegularUpdate: false, strokeColor: 'blue'});
+*/
+var time = 0,
+	val_in = 0,
+	val_out = 0;
+
+function mapToAxis(axis){}
+		
+//var inVal = iVal(b, diagonal);
+/*
+function iVal(board, diagonal){
+	board.update();
+	var x = 0.0;
+	var inVal = board.create('glider', [ x, x,	diagonal 	]);
+ 	inVal.setAttribute({    fixed: false, size:6, name:''		});
+ 	return inVal;
+} 
+*/
+var ptIn =  b.create('point',[0.0, 0.0], {face:'o', size:6, trace: true, color:'red'});
+var ptOut =  b.create('point',[0.0, 1.0], {face:'o', size:6, trace: true, color:'blue'});
+
+

@@ -1,0 +1,54 @@
+/***
+   *
+   * Preisach_Discrete.js
+   * will be extended ..._Nonlinear
+   * @author marcd 2017-01
+   *
+   ***/
+
+Preisach_Discrete = function(min, max, p){
+    var supportMin = min;
+    var supportMax = max;
+    var hysteronPrecision = p;  
+    
+    var input = 0.0;
+    var output = 0.0;
+    var previousMax = 0.0;
+    var previousMin = 0.0;
+
+    var supSize = supportMax - supportMax;
+    var numGraduations = Math.floor(supSize/hysteronPrecision);
+    var hysterons = createHysterons();
+//    var normalised: true;
+
+    /**
+      * update function...
+      * send commands to elements which must do their own updating
+      *
+      */
+    function createHysterons(){	
+	
+	//var hs = new Element
+//[numGraduations][numGraduations];
+//	return hs;
+    };
+    /**
+      * update function...
+      * send commands to elements which must do their own updating
+      *
+      */
+    function update(input) {
+	
+    };
+}
+
+/*
+  this stuff shold be done in .._Element class
+	for(attribute : Preisach_Discrete_Element.attributes){
+	    attribute.update;
+	}
+	//this.input = input;
+	if(x <= lowerBound) this.state = false;
+	else if(x >= higherBound) this.state = true;
+	return this.state;
+*/

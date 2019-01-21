@@ -1,0 +1,15 @@
+
+var brd_IO_slider = JXG.JSXGraph.initBoard(
+    'jxg-IO-slider', {
+			axis:false,    
+			showNavigation:false, showCopyright:false,	
+			boundingbox:[-0.15, 0.15, 1.15, -0.15]
+    }
+);
+
+var l = brd_IO_slider.create('line', 
+		[[0, 0], [1, 0]], 
+		{fixed:true, strokecolor: 'black', highlightstrokecolor: 'black'}//'blue'}
+);
+var in_out_slide = brd_pp.create('glider', [ 0, 0,	l]);
+in_out_slide.setAttribute({fixed: false, size:6, name:''});
